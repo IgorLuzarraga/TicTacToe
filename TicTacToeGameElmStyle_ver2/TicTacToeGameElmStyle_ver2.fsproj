@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>TicTacToe</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Domain\InfoMessages.fs" />
+    <Compile Include="Domain\Player.fs" />
+    <Compile Include="Domain\Square.fs" />
+    <Compile Include="Domain\Board.fs" />
+    <Compile Include="Domain\Model.fs" />
+    <Compile Include="Features\Init.fs" />
+    <Compile Include="Features\Message.fs" />
+    <Compile Include="Shared\Command.fs" />
+    <Compile Include="Features\Update.fs" />
+    <Compile Include="Features\View.fs" />
+    <Compile Include="App\GameLoop.fs" />
+    <Compile Include="App\Program.fs" />
+  </ItemGroup>
+
+</Project>

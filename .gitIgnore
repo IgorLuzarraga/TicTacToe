@@ -1,0 +1,8 @@
+# Ignore build directories
+bin/
+obj/
+
+# Ignore build directories in subfolders
+**/bin/
+**/obj/
+

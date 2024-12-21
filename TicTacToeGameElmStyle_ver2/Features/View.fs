@@ -9,6 +9,7 @@ module View =
     open TicTacToeGameElmStyle_ver2.Shared.Command
     open TicTacToeGameElmStyle_ver2.Domain.Player
     open TicTacToeGameElmStyle_ver2.Domain
+    open TicTacToeGameElmStyle_ver2.Shared
 
     let view model =
         let formatSquare ({ Row = r; Col = c }, value: Player option) =

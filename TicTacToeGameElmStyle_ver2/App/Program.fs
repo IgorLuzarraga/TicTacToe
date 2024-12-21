@@ -2,7 +2,7 @@ namespace TicTacToeGameElmStyle_ver2.App
 
 module Program =
     open TicTacToeGameElmStyle_ver2.Features.Init
-    open TicTacToeGameElmStyle_ver2.Domain
+    open TicTacToeGameElmStyle_ver2.Shared
 
     let runGame boardSize =
         if boardSize <= 0 then

@@ -8,6 +8,7 @@ module Update =
     open TicTacToeGameElmStyle_ver2.Domain.Model
     open TicTacToeGameElmStyle_ver2.Domain.Square
     open TicTacToeGameElmStyle_ver2.Domain
+    open TicTacToeGameElmStyle_ver2.Shared
 
     let checkWinner (board: Board) size =
         let isLineMatching line =

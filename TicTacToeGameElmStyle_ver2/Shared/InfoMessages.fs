@@ -1,4 +1,4 @@
-namespace TicTacToeGameElmStyle_ver2.Domain
+namespace TicTacToeGameElmStyle_ver2.Shared
 
 module InfoMessages =
     let gameOver = "Game is already over!"

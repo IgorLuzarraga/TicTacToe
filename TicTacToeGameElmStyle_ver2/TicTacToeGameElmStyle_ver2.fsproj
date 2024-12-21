@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Domain\InfoMessages.fs" />
+    <Compile Include="Shared\InfoMessages.fs" />
     <Compile Include="Domain\Player.fs" />
     <Compile Include="Domain\Square.fs" />
     <Compile Include="Domain\Board.fs" />

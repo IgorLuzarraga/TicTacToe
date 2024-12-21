@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "pFhruornods=",
+  "success": true,
+  "projectFilePath": "C:\\Projects\\BSM\\F#\\DDD\\TicTacToe\\TicTacToeGameElmStyle_ver1\\TicTacToeGameElmStyle_ver1.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\iluza\\.nuget\\packages\\fsharp.core\\8.0.301\\fsharp.core.8.0.301.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,14 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "msbuild",
+			"problemMatcher": [
+				"$msCompile"
+			],
+			"group": "build",
+			"label": "Build: TicTacToeGameElmStyle_ver1.fsproj",
+			"detail": "Build the TicTacToeGameElmStyle_ver1.fsproj project using dotnet build"
+		}
+	]
+}

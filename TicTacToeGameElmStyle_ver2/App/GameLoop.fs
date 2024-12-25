@@ -3,7 +3,6 @@ namespace TicTacToeGameElmStyle_ver2.App
 open System
 
 module GameLoop =
-    open TicTacToeGameElmStyle_ver2.Features.Init
     open TicTacToeGameElmStyle_ver2.Features.Update
     open TicTacToeGameElmStyle_ver2.Features.View
     open TicTacToeGameElmStyle_ver2.Shared.Command

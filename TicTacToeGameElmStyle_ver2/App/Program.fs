@@ -11,10 +11,8 @@ module Program =
             let initialModel = init boardSize
             GameLoop.programLoop initialModel
 
-    runGame 3
-
     [<EntryPoint>]
     let main argv =
         printfn "Tic Tac Toe game started."
-        runGame 3
+        runGame 2
         0

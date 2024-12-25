@@ -37,10 +37,8 @@ module Update =
         |> List.choose isLineMatching
         |> List.tryHead
 
-    let update (msg: Message) (model: Model) =
-        match (msg, model.GameStatus) with
-        | MakeMove square, InProgress ->
-            match Map.tryFind square model.Board with
+    let updateMakeMove model square = 
+        match Map.tryFind square model.Board with
             | None -> model, [ ShowError InfoMessages.squareOutOfBounds ]
             | Some (Some _) -> model, [ ShowError InfoMessages.squareOccupied ]
             | Some None ->
@@ -65,6 +63,10 @@ module Update =
                     CurrentPlayer = nextPlayer
                     GameStatus = updatedGameStatus },
                 []
+
+    let update (msg: Message) (model: Model) =
+        match (msg, model.GameStatus) with
+        | MakeMove square, InProgress -> updateMakeMove model square
         | MakeMove _, _ -> model, [ ShowError InfoMessages.gameOver ]
         | InvalidInput err, _ -> model, [ ShowError $"Invalid input: {err}" ]
         | ExitGame, _ ->

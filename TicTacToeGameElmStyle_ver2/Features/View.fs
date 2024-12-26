@@ -5,7 +5,7 @@ open System
 module View =
     open TicTacToeGameElmStyle_ver2.Domain.Model
     open TicTacToeGameElmStyle_ver2.Domain.Square
-    open TicTacToeGameElmStyle_ver2.Features.Message
+    open TicTacToeGameElmStyle_ver2.Features
     open TicTacToeGameElmStyle_ver2.Shared.Command
     open TicTacToeGameElmStyle_ver2.Domain.Player
     open TicTacToeGameElmStyle_ver2.Domain
@@ -55,8 +55,8 @@ module View =
                   | [ (true, row); (true, col) ] ->
                       match Square.create row col size model.Board with
                       | Some square -> Message.MakeMove square
-                      | None -> InvalidInput InfoMessages.squareOutOfBounds
-                  | _ -> InvalidInput InfoMessages.invalidInputFormat) 
+                      | None -> Message.InvalidInput InfoMessages.squareOutOfBounds
+                  | _ -> Message.InvalidInput InfoMessages.invalidInputFormat) 
           | Draw -> ExitGame
           | Winner _ -> ExitGame
         ]

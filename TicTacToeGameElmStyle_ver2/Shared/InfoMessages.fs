@@ -11,4 +11,5 @@ module InfoMessages =
     let playerWins player = sprintf "Player %A wins!" player
     let nextTurn player = sprintf "Next turn: Player %A" player
     let enterMovePrompt = "Enter your move (row,col):"
+    let enterStartOverPrompt = "Do you want to play another game? yes (y), no (n)"
     let currentBoard = "Current Board:"

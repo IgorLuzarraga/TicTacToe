@@ -33,31 +33,43 @@ module View =
             | Draw -> InfoMessages.drawMessage
             | InProgress -> InfoMessages.nextTurn model.CurrentPlayer
 
+    let handleViewEndGame  =
+        [Print InfoMessages.enterStartOverPrompt;
+         ReadInput (fun input ->
+            match input.Trim().ToLower() with
+            | "y" -> Message.StartOver
+            | _ -> Message.ExitGame)]
+
+    let handleViewInProgress (model: Model) =
+        let size = model.Board |> Board.getBoardSize
+
+        [Print InfoMessages.enterMovePrompt
+         ReadInput (fun input ->
+            match input.Trim().Split(',')
+                    |> Array.map Int32.TryParse
+                    |> Array.toList
+                with
+            | [ (true, row); (true, col) ] ->
+                match Square.create row col size model.Board with
+                | Some square -> Message.MakeMove square
+                | None -> Message.InvalidInput InfoMessages.squareOutOfBounds
+            | _ -> Message.InvalidInput InfoMessages.invalidInputFormat)]
+
     let view model =
 
         let currentBoard = getCurrentBoard model.Board
 
         let statusMessage= getStatusMessage model
 
-        let size = model.Board |> Board.getBoardSize
+        let genericCommandList =
+            [Print $"{InfoMessages.currentBoard}\n{currentBoard}"
+             Print statusMessage]
 
-        [ Print $"{InfoMessages.currentBoard}\n{currentBoard}"
-          Print statusMessage
-          match model.GameStatus with
-          | InProgress ->
-              Print InfoMessages.enterMovePrompt
+        let gameStatusCommandList =     
+            match model.GameStatus with
+                | InProgress -> handleViewInProgress model
+                | Draw -> handleViewEndGame
+                | Winner _ -> handleViewEndGame
 
-              ReadInput (fun input ->
-                  match input.Trim().Split(',')
-                        |> Array.map Int32.TryParse
-                        |> Array.toList
-                      with
-                  | [ (true, row); (true, col) ] ->
-                      match Square.create row col size model.Board with
-                      | Some square -> Message.MakeMove square
-                      | None -> Message.InvalidInput InfoMessages.squareOutOfBounds
-                  | _ -> Message.InvalidInput InfoMessages.invalidInputFormat) 
-          | Draw -> ExitGame
-          | Winner _ -> ExitGame
-        ]
-
+        genericCommandList @ gameStatusCommandList
+        

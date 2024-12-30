@@ -9,6 +9,7 @@ module Update =
     open TicTacToeGameElmStyle_ver2.Domain.Square
     open TicTacToeGameElmStyle_ver2.Domain
     open TicTacToeGameElmStyle_ver2.Shared
+    open TicTacToeGameElmStyle_ver2.Features.Init
 
     let checkWinner (board: Board) size =
         let isLineMatching line =
@@ -64,6 +65,12 @@ module Update =
                     GameStatus = updatedGameStatus },
                 []
 
+    let updateStartOver (model: Model): Model * list<Command> =
+        let boardSize = model.Board |> Board.getBoardSize
+        let initialModel = init boardSize
+        (initialModel,[])
+
+
     let update (msg: Message) (model: Model) =
         match (msg, model.GameStatus) with
         | MakeMove square, InProgress -> updateMakeMove model square
@@ -73,3 +80,4 @@ module Update =
             model,
             [ Print InfoMessages.exitingGame
               Command.ExitGame ]
+        | StartOver, _ -> updateStartOver model 

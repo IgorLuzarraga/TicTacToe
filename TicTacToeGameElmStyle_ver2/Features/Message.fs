@@ -7,3 +7,4 @@ module Message =
         | MakeMove of Square
         | InvalidInput of string
         | ExitGame
+        | StartOver
